@@ -1,10 +1,10 @@
-import { connection } from "mongoose";
+import mongoose from "mongoose";
 
-declare global{
-    var mongoose:{
-        conn:connection | null,
-        promise:Promise<connection> | null  //
-    }
+declare global {
+    var mongoose: {
+        conn: mongoose.Connection | null;
+        promise: Promise<mongoose.Connection> | null;
+    } | undefined;
 }
 
-export {} //export as a module
+export {};
