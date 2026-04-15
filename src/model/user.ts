@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+import mongoose, {  models, model } from "mongoose";
+
 
 interface user_type{
     _id?:mongoose.Types.ObjectId;
@@ -38,5 +39,5 @@ const user_schema=new mongoose.Schema<user_type>({
 }, 
 { timestamps: true });
 
-const user=mongoose.model("user",user_schema)
+const user = models.user || model("user", user_schema);
 export default user
