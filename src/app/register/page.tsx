@@ -1,6 +1,7 @@
 "use client";
 
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 
@@ -8,6 +9,7 @@ const Page = () => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const router=useRouter()
   // Handle form submit
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -96,11 +98,11 @@ const Page = () => {
         </button>
 
         {/* Footer */}
-        <p className="text-center text-sm text-gray-400 mt-6">
+        <p onClick={()=>router.push("signin")} className="text-center text-sm text-gray-400 mt-6">
           Already have an account?{" "}
-          <a href="signin" className="text-blue-500 cursor-pointer hover:underline">
+          <span className="text-blue-500 cursor-pointer hover:underline">
             Sign In
-          </a>
+          </span>
         </p>
       </div>
     </div>

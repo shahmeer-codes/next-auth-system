@@ -3,11 +3,12 @@
 import axios from "axios";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
+  const router=useRouter()
   // Handle login
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,11 +88,11 @@ const Page = () => {
         </button>
 
         {/* Footer */}
-        <p className="text-center text-sm text-gray-400 mt-6">
+        <p onClick={()=>router.push("register")} className="text-center text-sm text-gray-400 mt-6">
           Don’t have an account?{" "}
-          <a href="register" className="text-blue-500 cursor-pointer hover:underline">
+          <span className="text-blue-500 cursor-pointer hover:underline">
             Register
-          </a>
+          </span>
         </p>
 
       </div>
