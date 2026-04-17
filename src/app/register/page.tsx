@@ -14,12 +14,18 @@ const Page = () => {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const data = await axios.post("/api/auth/register", {
+      const res = await axios.post("/api/auth/register", {
         name,
         email,
         password,
       });
-      console.log(data);
+      if(res.status===201)
+      {
+        setemail("");
+        setname("");
+        setpassword("");
+      }
+      console.log(res.data.new_user);
       
     } catch (err) {
       console.log(err);

@@ -1,28 +1,29 @@
 "use client";
-
-import axios from "axios";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from 'next/navigation';
+import { signIn, useSession } from "next-auth/react";
 
 const Page = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const router=useRouter()
+  //check session contain data or not
+  const session=useSession()
+  console.log(session);
+  
   // Handle login
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("/api/auth/signin", {
-        email,
-        password,
-      });
+      const res = await signIn("credentials",{
+        email,password
+      })
 
-      console.log("LOGIN SUCCESS:", res.data);
+      console.log(res);
     } catch (err) {
       console.log("LOGIN ERROR:", err);
-     
     }
   };
 
@@ -94,7 +95,7 @@ const Page = () => {
             Register
           </span>
         </p>
-
+        
       </div>
     </div>
   );
