@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Client_session_provider from "@/lib/Client_session_provider";
 import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -18,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={cn("font-sans", geist.variable)}>
+    <html>
       <body className="min-h-full flex flex-col bg-black text-white">
         <Client_session_provider>
           {children}
